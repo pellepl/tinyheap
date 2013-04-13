@@ -1,0 +1,2 @@
+FILES +=	tinyheap.c
+
