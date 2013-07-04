@@ -171,7 +171,7 @@ static void th_internalAlloc(tinyheap* heap, unsigned int bsize, th_block_h* blo
 
 void* th_malloc(tinyheap* heap, unsigned int size) {
   if (size == 0) return 0;
-	unsigned int bsize = (size + sizeof(th_block_h) + TH_BLOCKSIZE - 1) / TH_BLOCKSIZE;
+	unsigned int bsize = (size + sizeof(th_block_h) + TH_ALIGNMENT + TH_BLOCKSIZE - 1) / TH_BLOCKSIZE;
 	th_block_h* b = 0;
 
 	TH_LOCK(heap);
@@ -202,7 +202,7 @@ void* th_malloc(tinyheap* heap, unsigned int size) {
 
 		TH_UNLOCK(heap);
 
-		return (void*)b + sizeof(th_block_h);
+		return (void*)b + sizeof(th_block_h) + TH_ALIGNMENT;
 	} else {
     TH_UNLOCK(heap);
 	  return 0;
@@ -210,7 +210,7 @@ void* th_malloc(tinyheap* heap, unsigned int size) {
 }
 
 void th_free(tinyheap* heap, void* p) {
-	th_block_h* block = (th_block_h*)(p - sizeof(th_block_h));
+	th_block_h* block = (th_block_h*)(p - sizeof(th_block_h) - TH_ALIGNMENT);
 	TH_ASSERT_PAR_FREE(block);
 	TH_ASSERT_FREE_FREED(block);
 

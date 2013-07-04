@@ -81,6 +81,10 @@
 /* called for the remaining free part when free memory is allocated  */
 #define TH_ON_SPLITFREED(addr, len) //memset(addr, 0x55, len)
 
+#ifndef TH_ALIGNMENT
+#define TH_ALIGNMENT (sizeof(void *) - (sizeof(th_block_h)&(sizeof(void *)-1)))
+#endif
+
 
 #define TH_PRINTF(...)
 
