@@ -63,6 +63,12 @@ typedef struct tinyheap {
 #endif
 } tinyheap;
 
+#if TH_ADDRESS_ALIGN == 0
+#define TH_ALIGNMENT (0)
+#else
+#define TH_ALIGNMENT (TH_ADDRESS_ALIGN - (sizeof(th_block_h)&(TH_ADDRESS_ALIGN-1)))
+#endif
+
 /* initializes a heap of given size at given buffer address */
 void th_init(tinyheap* heap, void* buffer, int len);
 /* allocates memory in heap */

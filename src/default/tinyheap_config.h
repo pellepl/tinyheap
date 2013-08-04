@@ -179,12 +179,10 @@
 #endif
 
 /* address alignment for returned pointers to heap */
-#ifndef TH_ALIGNMENT
+#ifndef TH_ADDRESS_ALIGN
 /* align size, default to size of a pointer on target platform */
 #define TH_ADDRESS_ALIGN  sizeof(void *)
 #endif
-
-#define TH_ALIGNMENT (TH_ADDRESS_ALIGN - (sizeof(th_block_h)&(TH_ADDRESS_ALIGN-1)))
 
 /* debug */
 #ifndef TH_DUMP

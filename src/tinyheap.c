@@ -362,7 +362,7 @@ void th_dump(tinyheap* heap) {
     TH_PRINTF("  %p %s prv:%04i nxt:%04i len:%04i ",
         block,
         block->free ? "FREE" : "BUSY",
-        block->prev, block->next, block->next * TH_BLOCKSIZE);
+        block->prev, block->next, block->next * TH_BLOCKSIZE + TH_ALIGNMENT);
 #if TH_USE_PARITY
     TH_PRINTF("%s", th_checkParity(block) ? "OK" : "BAD");
 #endif
