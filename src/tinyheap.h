@@ -35,22 +35,22 @@
 /* heap block header */
 typedef struct __attribute__((packed)) th_block_h {
   /* free flag */
-	unsigned int free 	 : 1;
-	/* pointer to next block header */
-	unsigned int next 	 : TH_ADDRESSING_BITS-1;
+  unsigned int free    : 1;
+  /* pointer to next block header */
+  unsigned int next    : TH_ADDRESSING_BITS-1;
   /* header parity bit */
-	unsigned int parity  : 1;
+  unsigned int parity  : 1;
   /* pointer to previous block header */
-	unsigned int prev 	 : TH_ADDRESSING_BITS-1;
+  unsigned int prev    : TH_ADDRESSING_BITS-1;
 } th_block_h;
 
 /* heap descriptor */
 typedef struct tinyheap {
-	th_block_h* p;
-	int len;
+  th_block_h* p;
+  int len;
 #if TH_SEEK_STRAT_MIN_MAX
-	th_block_h* smallFree;
-	th_block_h* bigFree;
+  th_block_h* smallFree;
+  th_block_h* bigFree;
 #endif
 #if TH_SEEK_STRAT_LAST_FREE
   th_block_h* lastFree;
@@ -59,7 +59,7 @@ typedef struct tinyheap {
   unsigned int free;
 #endif
 #if TH_COUNT_SEARCH_CYCLES
-	unsigned int count;
+  unsigned int count;
 #endif
 } tinyheap;
 

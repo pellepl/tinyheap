@@ -181,7 +181,7 @@
 /* address alignment for returned pointers to heap */
 #ifndef TH_ADDRESS_ALIGN
 /* align size, default to size of a pointer on target platform */
-#define TH_ADDRESS_ALIGN  sizeof(void *)
+#define TH_ADDRESS_ALIGN    sizeof(void *)
 #endif
 
 /* debug */
