@@ -306,11 +306,11 @@ void th_free(tinyheap* heap, void* p) {
 #if TH_DUMP
 void th_dump(tinyheap* heap) {
 #if TH_SEEK_STRAT_MIN_MAX
-  heap->smallFree = 0;
-  heap->bigFree = 0;
+  //heap->smallFree = 0;
+  //heap->bigFree = 0;
 #endif
 #if TH_SEEK_STRAT_LAST_FREE
-  heap->lastFree = 0;
+  //heap->lastFree = 0;
 #endif
 
 

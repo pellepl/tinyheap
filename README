@@ -8,7 +8,7 @@ To be used in an embedded environment with small ram.
 
 Use the heap by doing something like this:
 
-  #include "tinyheap.c"
+  #include "tinyheap.h"
   
   // use this space as heap
   static char heap_space[4096];
