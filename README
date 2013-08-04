@@ -1,0 +1,34 @@
+TINYHEAP
+
+Simple, linked-list implementation of a heap in pure C.
+
+See the tinyheap_config.h in the default/ folder for buildtime configurations.
+
+To be used in an embedded environment with small ram.
+
+Use the heap by doing something like this:
+
+  #include "tinyheap.c"
+  
+  // use this space as heap
+  static char heap_space[4096];
+  // this is the heap metainfo
+  static tinyheap heap;
+  
+  // initiate heap, do this at startup
+  void startup_heap_init(void) {
+    th_init(&heap, heap_space, sizeof(heap_space));
+  }
+  
+  // use the heap
+  void use_heap(void) {
+    void *data = th_malloc(&heap, 100);
+    if (data == 0) {
+      .. out of memory ..
+    } else {
+      .. do something with those hundred bytes ..
+      th_free(&heap, data);
+    }
+  }
+
+  

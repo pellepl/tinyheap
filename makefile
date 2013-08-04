@@ -51,7 +51,7 @@ ALLOBJFILES += $(OBJFILES)
 
 DEPENDENCIES = $(DEPFILES) 
 
-# link object files, create binary for flashing
+# link object files
 $(BINARY): $(ALLOBJFILES)
 	@echo "... linking"
 	@${CC} $(LINKEROPTIONS) -o ${builddir}/$(BINARY).elf $(ALLOBJFILES) $(LIBS)
@@ -61,7 +61,7 @@ $(BINARY): $(ALLOBJFILES)
 # compile c files
 $(OBJFILES) : ${builddir}/%.o:%.c
 		@echo "... compile $@"
-		@${CC} -c -o $@ $<
+		@${CC} -c -Wall -o $@ $<
 
 # make dependencies
 $(DEPFILES) : ${builddir}/%.d:%.c
@@ -80,8 +80,3 @@ clean:
 	@echo ... removing build files in ${builddir}
 	@rm -f ${builddir}/*.o
 	@rm -f ${builddir}/*.d
-	@rm -f ${builddir}/*.out
-	@rm -f ${builddir}/*.hex
-	@rm -f ${builddir}/*.elf
-	@rm -f ${builddir}/*.map
-	@rm -f ${builddir}/*_disasm.s
