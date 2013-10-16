@@ -370,7 +370,7 @@ void th_dump(tinyheap* heap) {
   th_block_h* block = heap->p;
   TH_ASSERT_PAR_MALLOC(block);
   do {
-    TH_PRINTF("  %p %s prv:%04i nxt:%04i len:%04i ",
+    TH_PRINTF("  %p %s prv:%08i nxt:%08i len:%08i ",
         block,
         block->free ? "FREE" : "BUSY",
         block->prev, block->next, block->next * TH_BLOCKSIZE + TH_ALIGNMENT);
